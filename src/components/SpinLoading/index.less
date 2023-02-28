@@ -1,0 +1,31 @@
+@import '../../styles/theme.less';
+
+.spin-loading {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	width: 50px;
+	height: 50px;
+	transform: translate(-50%, -50%);
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+
+	@keyframes spin-loading-rotate {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	img {
+		width: 50%;
+		height: 50%;
+		display: block;
+		animation: spin-loading-rotate 1s linear infinite;
+	}
+}

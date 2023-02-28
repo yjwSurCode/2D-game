@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <script>
+      (function () {
+        if (typeof globalThis === "undefined") {
+          window.globalThis = window;
+        }
+
+        if (typeof global === "undefined") {
+          window.global = window;
+        }
+      })();
+    </script>
+    <script>
+      // const width = document.documentElement.clientWidth;
+      // const height = document.documentElement.clientHeight;
+      // var screen_width = width; //屏幕宽度
+      // if (width < height) {
+      //   screen_width = height; //如果 是竖屏，灵感的宽度就等于屏高
+      //   const contentDOM = document.getElementById("root");
+      //   contentDOM.style.width = height + "px";
+      //   contentDOM.style.height = width + "px";
+      //   contentDOM.style.top = (height - width) / 2 + "px";
+      //   contentDOM.style.left = 0 - (height - width) / 2 + "px";
+      //   contentDOM.style.transform = "rotate(90deg)";
+      // }
+
+      // //根据手机旋转的角度来判断
+      // const evt =
+      //   "onorientationchange" in window ? "orientationchange" : "resize"; //旋转事件
+      // window.addEventListener(
+      //   evt,
+      //   function () {
+      //     //事件监听
+      //     if (window.orientation === 90 || window.orientation === -90) {
+      //       //旋转到 90 或 -90 度，即竖屏到横屏
+      //       screen_width = height; //横屏，灵感的宽度就等于屏高
+      //       contentDOM.style.width = height + "px";
+      //       contentDOM.style.height = width + "px";
+      //       contentDOM.style.top = "0px";
+      //       contentDOM.style.left = "0px";
+      //       contentDOM.style.transform = "none"; //不旋转；
+      //     } else {
+      //       //旋转到 180 或 0 度，即横屏到竖屏
+      //       screen_width = height; //竖屏，灵感的宽度就等于屏高
+      //       contentDOM.style.width = height + "px";
+      //       contentDOM.style.height = width + "px";
+      //       contentDOM.style.top = (height - width) / 2 + "px";
+      //       contentDOM.style.left = 0 - (height - width) / 2 + "px";
+      //       contentDOM.style.transform = "rotate(90deg)"; //旋转90度
+      //     }
+      //   },
+      //   false
+      // );
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but this APP doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong
+      >
+    </noscript>
+    <div id="root"></div>
+    <script>
+      window.addEventListener("orientationchange", toOrientation);
+      function toOrientation() {
+        let box = document.querySelector("#root");
+        if (window.orientation == 90 || window.orientation == -90) {
+          // 横屏-显示提示
+          console.log("yes");
+          // box.style.display = "block";
+        } else {
+          console.log("no");
+          // 横屏-隐藏提示
+          // box.style.display = "none";
+        }
+      }
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,530 @@
+@import "../styles/theme.less";
+
+//info
+.anticon {
+  width: 1em;
+}
+
+//prompt
+.prompt-box {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  z-index: 100;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+
+  .container {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px;
+    margin: 100px;
+    border-radius: 10px;
+    color: #000000;
+  }
+
+  .container-btn {
+    .btn {
+      margin: 10px;
+    }
+  }
+}
+
+//spin
+.spinbox {
+  max-height: 1000px !important;
+  height: 100% !important;
+  // background-color: rgb(183, 184, 198, 0.1);
+  // height: 100vh !important;
+  // position: absolute;
+}
+
+.ant-spin {
+  max-height: 1000px;
+}
+
+.ant-spin-nested-loading {
+  // background-color: white;
+}
+
+.antdCountDown {
+  position: absolute;
+  height: 10px;
+  width: 100vh;
+  left: 0;
+}
+//antd countdown
+.ant-statistic {
+  position: absolute;
+  z-index: 99;
+  width: 13rem;
+  text-align: left;
+}
+
+.ant-statistic-content {
+  color: rgb(255, 255, 255) !important;
+  font-weight: bold !important;
+  font-size: 0.5rem !important;
+}
+.index-page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-image: url("../../public/image/_0015_bg_city.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-size: 0.3rem;
+}
+
+.index-page__panle {
+  background-image: url("../../public/image/_0016_bg_city.png");
+  position: relative;
+  bottom: 0;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.index-page__action-box {
+  position: absolute;
+  z-index: 2;
+  bottom: 0.3rem;
+  width: 100%;
+  color: white;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+
+  &-img {
+    width: 2rem;
+    height: 1rem;
+    margin: 0 0.2rem;
+    position: relative;
+
+    & > img {
+      width: 2rem;
+      height: 1rem;
+    }
+
+    & > span {
+      cursor: pointer;
+      color: rgb(225, 223, 223);
+      font-size: 0.4rem;
+      height: 100%;
+      line-height: 200%;
+      display: inline-block;
+      position: absolute;
+      left: 50%;
+      width: 100%;
+      margin-left: -1rem;
+    }
+  }
+}
+
+.prepareBtn {
+  position: absolute;
+  bottom: 0.3rem;
+  display: flex;
+  justify-content: center;
+  left: 50%;
+  margin-left: -1rem;
+}
+
+.index-page__field-panle {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+
+  .anchor-img {
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+
+    & > img {
+      width: 1.8rem;
+      height: 2rem;
+    }
+  }
+
+  .field-center {
+    position: relative;
+    margin: 0 auto;
+    width: 70%;
+    top: -0.5rem;
+    & > img {
+      width: 100%;
+      height: 60vh;
+      // height: 3.5rem;
+    }
+  }
+
+  .desktop-card {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    perspective: 200px;
+    transition: all 1s;
+
+    &-box {
+      // box-shadow: 1px 1px 1px red;
+      transition: all 1s;
+    }
+
+    &-img {
+      width: 1rem;
+      height: 1.2rem;
+      margin: 0.05rem;
+      // transform: rotate3d(1, 19, 5, 53deg);
+      transform: rotateX(10deg);
+      // transform: rotateY(10deg);
+      transition: all 1s;
+      box-shadow: 1px 10px 10px #096e00;
+    }
+
+    // .g-both {
+    //   background: hsl(199, 98%, 48%);
+    //   box-shadow: 0 0 5px 2px hsl(199, 98%, 40%);
+    // }
+    // .g-both::before {
+    //   content: "";
+    //   position: absolute;
+    //   top: 50%;
+    //   left: 5%;
+    //   right: 5%;
+    //   bottom: 15%;
+    //   border-radius: 10px;
+    //   background: hsl(199, 98%, 20%);
+    //   transform: translate(0, -20%) rotate(-4deg);
+    //   transform-origin: center center;
+    //   box-shadow: 0 0 20px 15px hsl(199, 98%, 20%);
+    //   z-index: -1;
+    // }
+  }
+
+  //! 六人
+  .staff-box-six {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    color: white;
+    height: 3rem;
+
+    // ! 玩家状态
+    .span-userStatus {
+      animation: "bounce";
+      animation-duration: "2s";
+      position: absolute;
+      z-index: 99;
+      top: -1rem;
+      right: 0rem;
+      color: white;
+      font-weight: bold;
+      font-size: 0.3rem;
+    }
+
+    .sigle-staff {
+      width: 1rem;
+      height: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      background-color: rgba(233, 233, 233, 0);
+      // padding: 10px;
+
+      &-avatar {
+        width: 2rem;
+        height: 2rem;
+        display: block;
+        // box-shadow: 0px 0px 10px 10px #ffc500;
+        border-radius: 50%;
+      }
+
+      .content {
+        position: relative;
+        top: 0rem;
+        //! 避免下面冲突
+        translate: 0vw 0rem;
+
+        .flexContent {
+          display: flex;
+        }
+
+        .sigle-staff-level {
+          width: 0.4rem;
+          height: 0.4rem;
+
+          position: absolute;
+          z-index: 9;
+        }
+
+        .sigle-staff-state {
+          height: 0.2rem;
+          line-height: 0rem;
+          // line-height: 100%;
+          border-radius: 5px;
+          border: 3px solid #27b7bc;
+          background-color: #229da1;
+          color: #fff;
+          font-size: 0.2rem;
+          padding: 0.1rem 0.2rem;
+
+          position: absolute;
+          z-index: 9;
+          top: -0.3rem;
+          right: -0.1rem;
+        }
+
+        .sigle-staff-money {
+          // position: absolute;
+          background-color: #11286b;
+          border: 3px solid #4c6689;
+          border-radius: 10px;
+          padding: 0rem 0.1rem;
+          color: #fff;
+          font-size: 0.2rem;
+          height: 0.4rem;
+          line-height: 0.3rem;
+          padding-left: 0.5rem;
+          white-space: nowrap;
+        }
+      }
+    }
+    & > :nth-of-type(1) {
+      color: red;
+      translate: 5vw -1rem;
+    }
+    & > :nth-of-type(2) {
+      color: blue;
+      translate: 60vw -2rem;
+      // transform: rotate(315deg);
+      // transform-origin: 20px 220px;
+    }
+    & :nth-of-type(3) {
+      color: red;
+      translate: 70vw 0rem;
+    }
+    & :nth-of-type(4) {
+      color: blue;
+      translate: 60vw 2.5rem;
+    }
+    & :nth-of-type(5) {
+      color: red;
+      translate: 5vw 1.5rem;
+    }
+    & :nth-of-type(6) {
+      color: blue;
+      translate: -5vw -3rem;
+    }
+  }
+
+  // {/* //! 桌面筹码+金额 */}
+  .staff-box-six-chip {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    color: white;
+
+    .sigle-staff {
+      width: 2rem;
+      height: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // background-color: rgba(233, 233, 233, 0.2);
+    }
+    .flexContent {
+      display: flex;
+      align-items: center;
+
+      &-div {
+        margin-right: 0.1rem;
+
+        & > :nth-of-type(2) {
+          position: absolute;
+          left: 23px;
+          top: 53px;
+        }
+      }
+    }
+
+    .sigle-staff-money {
+      // position: absolute;
+      background: rgba(24, 24, 24, 0.3);
+      // border: 3px solid #4c6689;
+      border-radius: 10px;
+      padding: 0.1rem 0.2rem;
+      color: #fff;
+      font-size: 0.2rem;
+      // height: 0.1rem;
+      // line-height: 0.3rem;
+    }
+
+    & > :nth-of-type(1) {
+      color: red;
+      translate: 10vw 0.5rem;
+    }
+    & > :nth-of-type(2) {
+      color: blue;
+      translate: 50vw -0.5rem;
+      // transform: rotate(315deg);
+      // transform-origin: 20px 220px;
+    }
+    & :nth-of-type(3) {
+      color: red;
+      translate: 55vw 0rem;
+    }
+    & :nth-of-type(4) {
+      color: blue;
+      translate: 50vw 1rem;
+    }
+    & :nth-of-type(5) {
+      color: red;
+      translate: 10vw 0rem;
+    }
+    & :nth-of-type(6) {
+      color: blue;
+      translate: 5vw -3rem;
+    }
+    & :nth-of-type(7) {
+      color: blue;
+      translate: 29vw -5.5rem;
+    }
+  }
+}
+
+.current-card {
+  width: 100%;
+  height: 10px;
+  display: flex;
+  justify-content: center;
+
+  .stripImg {
+    width: 2rem;
+    height: 0.5rem;
+    z-index: 99;
+  }
+
+  #fan-out {
+    width: 1rem;
+    height: 1rem;
+    background-position: top left;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    bottom: 2rem;
+    left: 53%;
+    // margin-left: 0.5rem;
+  }
+  #fan-out li {
+    width: 148px;
+    height: 210px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border-radius: 10px;
+    position: absolute;
+    top: 75px;
+    -webkit-transform-origin: 50% 300px;
+    -moz-transform-origin: 50% 300px;
+    -ms-transform-origin: 50% 300px;
+    -o-transform-origin: 50% 300px;
+    transform-origin: 50% 300px;
+    /* Safari and Chrome */
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    -webkit-transform: rotate(-40deg);
+    -moz-transform: rotate(-40deg);
+    -ms-transform: rotate(-40deg);
+    -o-transform: rotate(-40deg);
+    transform: rotate(-40deg);
+    -webkit-transition: 0.5s all ease-in-out;
+    -moz-transition: 0.5s all ease-in-out;
+    transition: 0.5s all ease-in-out;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #fan-out li:last-of-type {
+    cursor: pointer;
+  }
+  #fan-out.active li {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  }
+  #fan-out.active li:nth-of-type(2) {
+    -webkit-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+  }
+  #fan-out.active li:nth-of-type(3) {
+    background: url("../public/image/card/brand_07.png");
+    -webkit-transform: rotate(-20deg);
+    -ms-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+  }
+  #fan-out.active li:nth-of-type(4) {
+    -webkit-transform: rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+  #fan-out.active li:nth-of-type(5) {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  .fan-card {
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+  }
+}
+
+// 投注动效
+#ball {
+  display: none;
+  width: 12px;
+  height: 12px;
+  background: #5ea345;
+  border-radius: 50%;
+  position: fixed;
+  transition: left 1s linear, top 1s ease-in;
+}
+
+.money-progress {
+  // position: absolute;
+  // z-index: 99;
+  // width: 1rem;
+  // right: 0;
+  // top: 0.1rem;
+  // display: flex;
+  // flex-direction: column;
+
+  // transform: rotateX(90deg);
+
+  .plusBtn {
+    display: block;
+  }
+
+  .minBtn {
+    display: flex;
+  }
+}
+
+.ant-progress-line {
+  width: 300px;
+}
+
+.ant-progress {
+  // transform: rotate(90deg);
+  position: relative;
+  right: 2.5rem;
+}
+.ant-progress-text {
+  color: red !important;
+  // #1677ff
+}

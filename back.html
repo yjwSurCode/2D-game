@@ -1,0 +1,149 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .menu {
+        width: 100px;
+        height: 40px;
+        font-size: 30px;
+        line-height: 40px;
+        text-align: center;
+        border: 1px solid #000000;
+        float: left;
+        margin-left: 50px;
+        user-select: none;
+      }
+      p {
+        clear: both;
+        display: none;
+      }
+      .dialog {
+        width: 100%;
+        height: 100%;
+        background: black;
+        opacity: 0.5;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+      .container {
+        width: 500px;
+        height: 200px;
+        position: absolute;
+        z-index: 100;
+        left: calc(50% - 250px);
+        top: calc(50% - 100px);
+        background: #ffffff;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-between;
+      }
+      .title {
+        color: #000000;
+        font-size: 30px;
+        line-height: 30px;
+        font-weight: 600;
+      }
+      .btn {
+      }
+      .btnLeft {
+        width: 50px;
+        height: 30px;
+        background-color: red;
+        margin-right: 395px;
+      }
+      .btnRight {
+        width: 50px;
+        height: 30px;
+        background-color: chartreuse;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu">水果</div>
+    <div class="menu">蔬菜</div>
+    <div class="menu">零食</div>
+    <div class="menu">饮料</div>
+    <br />
+    <br />
+    <p>猕猴桃 苹果 梨</p>
+    <p>白菜 土豆 地瓜</p>
+    <p>辣条 牛肉干 薯片</p>
+    <p>可乐 雪碧 果汁</p>
+
+    <div class="dialog">
+      <div class="container">
+        <div class="title">确定要返回吗</div>
+        <div class="btn">
+          <button class="btnLeft">取消</button>
+          <button class="btnRight">确定</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var arr, divs;
+      let dialog = document.querySelector(".dialog");
+      init();
+      function init() {
+        // 当历史前进或者后退时就会收到这个事件
+        window.onpopstate = popStateHandler;
+        arr = Array.from(document.getElementsByTagName("p"));
+        divs = Array.from(document.querySelectorAll(".menu"));
+        cancel = document.querySelector(".btnLeft");
+        ensure = document.querySelector(".btnRight");
+        arr[0].style.display = "block";
+        for (var i = 0; i < divs.length; i++) {
+          divs[i].onclick = clickHandler;
+        }
+        cancel.addEventListener("click", handleClick);
+        ensure.addEventListener("click", handleClick);
+      }
+
+      function clickHandler() {
+        var index = divs.indexOf(this);
+        //    history.pushState({state:1},"","#"+this.innerHTML);
+        // 在历史记录列表中增加数据，后面的#内容标示当前跳转部分
+        history.pushState({ index: index }, "", document.URL);
+        changeMenu(index);
+      }
+
+      function popStateHandler() {
+        console.log(history.state);
+        // changeMenu(history.state.index)
+        dialog.style.display = "block";
+      }
+
+      function changeMenu(index) {
+        for (var i = 0; i < arr.length; i++) {
+          if (i === index) {
+            arr[i].style.display = "block";
+          } else {
+            arr[i].style.display = "none";
+          }
+        }
+      }
+
+      function handleClick(e) {
+        if (e.target.innerHTML === "确定") {
+          dialog.style.display = "none";
+          console.log("点击了确定");
+          location.href = "http://www.baidu.com";
+          return;
+        }
+        dialog.style.display = "none";
+        console.log("点击了取消");
+        // window.location.href='http://www.baidu.com'
+      }
+    </script>
+  </body>
+</html>

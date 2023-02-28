@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div>
+      <img
+        id="myImg"
+        src="./public/map.gif"
+        alt=""
+        width="100%"
+        usemap="#Map"
+        onload="init()"
+      />
+      <map name="Map">
+        <area shape="circ" coords="350,350,100" href="#1" />
+        <area
+          shape="poly"
+          coords="65,402,225,340,244,374,281,398,213,556,125,495"
+          href="#2"
+        />
+        <area
+          shape="poly"
+          coords="181,249,173,287,181,332,19,395,4,292,23,183"
+          href="#3"
+        />
+        <area
+          shape="poly"
+          coords="227,240,68,172,128,85,221,23,283,185,251,203"
+          href="#4"
+        />
+        <area
+          shape="poly"
+          coords="293,179,230,18,302,5,372,4,372,178,336,171"
+          href="#5"
+        />
+      </map>
+    </div>
+    <script type="text/javascript">
+      function init() {
+        return setTimeout(function () {
+          adjust({
+            name: "Map",
+            img: {
+              originalWidth: 395,
+              originalHeight: 607,
+            },
+          });
+        }, 100);
+      }
+      // init()
+      var timeout = null; // onresize触发次数过多，设置定时器
+      window.onresize = function () {
+        clearTimeout(timeout);
+        timeout = init(); // 页面大小变化，重新加载页面以刷新MAP
+      };
+      //获取MAP中元素属性
+      function adjust({
+        name,
+        img = {
+          originalWidth: 100,
+          originalHeight: 100,
+        },
+      }) {
+        var map = document.querySelector(`[name="${name}"]`);
+        var element = [...map.childNodes].filter((item) => item.coords);
+        let originalArea;
+        if (!map.getAttribute("original-area")) {
+          originalArea = element[0].coords;
+          map.setAttribute("original-area", originalArea);
+        } else {
+          originalArea = map.getAttribute("original-area");
+        }
+        var coefficient = {
+          width:
+            parseFloat(element[0].coords.split(",")[0]) /
+            parseFloat(originalArea.split(",")[0]),
+          height:
+            parseFloat(element[0].coords.split(",")[1]) /
+            parseFloat(originalArea.split(",")[1]),
+        };
+        var myImg = document.querySelector(`[usemap="#${name}"]`);
+        var ratio = {
+          width: myImg.width / img.originalWidth,
+          height: myImg.height / img.originalHeight,
+        };
+        for (var i = 0; i < element.length; i++) {
+          var oldCoords = element[i].coords;
+          var newCoords = adjustPosition(oldCoords, coefficient, ratio);
+          element[i].setAttribute("coords", newCoords);
+        }
+      }
+
+      //调整MAP中坐标
+      function adjustPosition(
+        position,
+        coefficient = { height: 1, width: 1 },
+        ratio = { height: 1, width: 1 }
+      ) {
+        var each = position.split(",");
+        //获取每个坐标点
+        for (var i = 0; i < each.length; i++) {
+          each[i] = Math.round(
+            (parseFloat(each[i]) / coefficient.width) * ratio.width
+          ).toString(); //x坐标
+          i++;
+          each[i] = Math.round(
+            (parseFloat(each[i]) / coefficient.height) * ratio.height
+          ).toString(); //y坐标
+        }
+        //生成新的坐标点
+        var newPosition = "";
+        for (var i = 0; i < each.length; i++) {
+          newPosition += each[i];
+          if (i < each.length - 1) {
+            newPosition += ",";
+          }
+        }
+        return newPosition;
+      }
+    </script>
+  </body>
+</html>
